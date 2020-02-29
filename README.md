@@ -15,5 +15,6 @@ count("path_str") # file or directory
         * Python
         * Lua
         * C-like: C, C++, C#, Java
+        * Plain Text: Markdown
 
 * Regex rules in config.py may has bugs, please issue.

@@ -4,7 +4,7 @@ from os import path
 
 from dynamic_object import DynamicObject
 
-LOG_LEVEL = logging.DEBUG
+LOG_LEVEL = logging.INFO
 
 LOG_FORMAT = '%(message)s'
 
@@ -34,12 +34,13 @@ TAG_TEST = 'Test'
 LEX_SPACE = 'Space'
 LEX_COMMENT = 'Comment'
 LEX_CODE = 'Code'
+LEX_TEXT = 'Text'
 LEX_TOTAL = 'Total'
 
 FLAG_BRACKETS = 'brackets'
 FLAG_CODE = 'code_line_unfinished'
 
-LEX_LIST = {LEX_SPACE, LEX_COMMENT, LEX_CODE, LEX_TOTAL}
+LEX_LIST = {LEX_SPACE, LEX_COMMENT, LEX_CODE, LEX_TEXT, LEX_TOTAL}
 
 PYTHON_LEXER_LIST.extend([
     # Space line
@@ -109,6 +110,8 @@ LUA_LEXER_LIST.extend([
 ])
 
 TEXT_LEXER_LIST.extend([
-    # Any line
-    DynamicObject(tag=LEX_TOTAL, rule=r'', flags=re.S),
+    # Space line
+    DynamicObject(tag=LEX_SPACE, rule=r'\s*(?=\n)', flags=re.U),
+    # Any other line
+    DynamicObject(tag=LEX_TEXT, rule=r'\s*[^\s]+[^\n]*(?=\n)', flags=re.U),
 ])

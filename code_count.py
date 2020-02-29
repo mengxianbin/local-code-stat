@@ -145,9 +145,8 @@ def match(text, lexer_list, context):
 def count_text(text, lexer_list):
     """Count a string of text"""
 
-    # End every line with \n
-    if not text.endswith('\n'):
-        text += '\n'
+    # Append a '\n' at the end
+    text += '\n'
 
     # Match lexer list
     remain = text

@@ -350,7 +350,8 @@ if __name__ == '__main__':
     # data = count('../..')
     # data = count('../../code_count.py')
     # data = count('../../config.py')
-    data = count(__file__)
+    # data = count(__file__)
+    data = count('../../README.md')
 
     logger.critical(dump_data(data))
 
